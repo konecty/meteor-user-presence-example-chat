@@ -27,7 +27,7 @@ UI.body.events({
 
 Template.registerHelper('getUserStatusDefault', function() {
 	var user = Meteor.user();
-	return (user && user.statusDefault) || 'auto';
+	return (user && user.statusDefault) || 'online';
 });
 
 Template.registerHelper('getUserStatus', function(userId) {
