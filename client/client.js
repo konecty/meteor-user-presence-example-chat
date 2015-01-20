@@ -5,6 +5,21 @@ Meteor.subscribe('users');
 Meteor.subscribe('messages');
 
 Meteor.startup(function() {
+	var notification = new Audio("http://freesound.org/data/previews/235/235911_2391840-lq.mp3");
+
+	var startup = false;
+	Messages.find().observe({
+		added: function(record) {
+			if (startup === true && record.userId !== Meteor.userId()) {
+				notification.play();
+			}
+		}
+	});
+
+	setTimeout(function() {
+		startup = true;
+	}, 1000);
+
 	Accounts.ui.config({
 		passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
 	});
