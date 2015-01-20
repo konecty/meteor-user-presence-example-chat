@@ -5,6 +5,7 @@ html {
 
 body {
 	padding-bottom: 40px;
+	color: #888888;
 }
 
 .login-buttons-dropdown-align-right {
@@ -14,12 +15,12 @@ body {
 .users {
 	position: fixed;
 	top: 50px;
-	bottom: 40px;
+	bottom: 0px;
 	right: 0px;
-	padding: 10px;
 	width: 200px;
 	background: #f1f1f1;
 	border-left: 1px solid #E7E7ED;
+	overflow: auto;
 }
 
 .messages {
@@ -36,7 +37,7 @@ body {
 	position: fixed;
 	bottom: 0px;
 	left: 0px;
-	right: 0px;
+	right: 200px;
 	background: #f1f1f1;
 	border-top: 1px solid #E7E7ED;
 }
@@ -58,11 +59,30 @@ table {
 	width: 100%;
 }
 
+.user-ball {
+	float: left;
+	width: 12px;
+	height: 12px;
+	border-radius: 10px;
+	margin-top: 4px;
+	margin-right: 5px;
+	border: 1px solid #CCC;
+}
+
+.user-item {
+	padding: 8px;
+	border-bottom: 1px solid #E7E7ED;
+}
+
+.user-name {
+	color: #888888;
+}
+
 .name {
 	text-align: right;
-	font-weight: bold;
 	padding-right: 5px;
 	min-width: 150px;
+	color: #CCCCCC;
 }
 
 .online {
@@ -78,5 +98,25 @@ table {
 }
 
 .offline {
-	color: #83847C;
+	color: #CCCCCC;
+}
+
+.online-bg {
+	background-color: rgba(0, 199, 78, .5);
+	border-color: #00C74E;
+}
+
+.away-bg {
+	background-color: rgba(229, 227, 67, .5);
+	border-color: #E5E343;
+}
+
+.busy-bg {
+	background-color: rgba(236, 129, 80, .5);
+	border-color: #EC8150;
+}
+
+.offline-bg {
+	background-color: rgba(204, 204, 204, .5);
+	border-color: #CCCCCC;
 }

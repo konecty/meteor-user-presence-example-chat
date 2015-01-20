@@ -49,7 +49,7 @@
 		<table>
 			{{#each messages}}
 				<tr>
-					<td class="name {{getUserStatus userId}}">
+					<td class="name">
 						{{getUserName userId}}:
 					</td>
 					<td width="100%">
@@ -64,8 +64,8 @@
 <template name="users">
 	<div class="users">
 		{{#each users}}
-			<div class="{{getUserStatus _id}}">
-				{{username}}
+			<div class="user-name user-item">
+				<div class="user-ball {{getUserStatus _id}}-bg"></div> {{username}}
 			</div>
 		{{/each}}
 	</div>
