@@ -1,0 +1,45 @@
+html {
+	padding: 10px;
+	font-family: Verdana, sans-serif;
+}
+
+.login-buttons-dropdown-align-right {
+	float: right;
+}
+
+.message {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	margin: 5px;
+	margin-right: 20px;
+}
+
+#message {
+	width: 100%;
+	font-size: 14px;
+	border-radius: 5px;
+	padding: 5px;
+	border: 2px solid #ccc;
+}
+
+.name {
+	text-align: right;
+}
+
+.online {
+	color: #00C74E;
+}
+
+.away {
+	color: #BFB442;
+}
+
+.busy {
+	color: #B13D08;
+}
+
+.offline {
+	color: #83847C;
+}

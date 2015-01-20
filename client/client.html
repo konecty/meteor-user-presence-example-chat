@@ -1,0 +1,31 @@
+<head>
+	<title>Chat</title>
+</head>
+
+<body>
+	{{> loginButtons align="right"}}<br>
+	<h1>Chat</h1>
+	{{> messages }}
+	{{> input }}
+</body>
+
+<template name="messages">
+	<table>
+	{{#each messages}}
+		<tr>
+			<td class="name {{getUserStatus userId}}">
+				{{getUserName userId}}:
+			</td>
+			<td>
+				{{message}}
+			</td>
+		</tr>
+	{{/each}}
+	</table>
+</template>
+
+<template name="input">
+	<div class="message">
+		<input type="text" id="message" placeholder="Mensagem">
+	</div>
+</template>
