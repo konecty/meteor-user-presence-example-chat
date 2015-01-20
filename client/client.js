@@ -8,6 +8,7 @@ Meteor.startup(function() {
 		passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
 	});
 
+	UserPresence.awayTime = 60000;
 	UserPresence.awayOnWindowBlur = false;
 	UserPresence.start();
 });
@@ -23,7 +24,7 @@ UI.body.events({
 
 Template.registerHelper('getUserStatusDefault', function() {
 	var user = Meteor.user();
-	return user && user.statusDefault;
+	return (user && user.statusDefault) || 'auto';
 });
 
 Template.registerHelper('getUserStatus', function(userId) {
