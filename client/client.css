@@ -93,6 +93,7 @@ td {
 .name {
 	text-align: right;
 	padding-right: 5px;
+	padding-left: 10px;
 	min-width: 150px;
 	color: #CCCCCC;
 }
