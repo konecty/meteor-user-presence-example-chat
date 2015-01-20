@@ -13,7 +13,7 @@ UI.body.events({
 	'click .statusDefault': function(e) {
 		var status = e.target.innerHTML;
 		if (status != Meteor.user().statusDefault) {
-			Meteor.call('setUserDefaultStatus', status);
+			Meteor.call('UserPresence:setDefaultStatus', status);
 		}
 	}
 });
