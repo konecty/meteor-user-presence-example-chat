@@ -11,6 +11,9 @@ Meteor.startup(function() {
 	UserPresence.awayTime = 60000;
 	UserPresence.awayOnWindowBlur = false;
 	UserPresence.start();
+
+	var messages = $('.messages');
+	messages.scrollTop(messages.height());
 });
 
 UI.body.events({
@@ -48,13 +51,14 @@ Template.messages.helpers({
 	getUserName: function(userId) {
 		var user = Meteor.users.findOne({_id: userId});
 		return user && user.username;
-	},
-
-	getUserStatusDefault: function() {
-		var user = Meteor.user();
-		return user && user.statusDefault;
 	}
-})
+});
+
+Template.users.helpers({
+	users: function() {
+		return Meteor.users.find({}, { sort: { username: 1}});
+	}
+});
 
 Template.input.events = {
 	'keydown input#message' : function (event) {
@@ -77,6 +81,9 @@ Template.input.events = {
 				document.getElementById('message').value = '';
 				message.value = '';
 			}
+
+			var messages = $('.messages');
+			messages.scrollTop(messages.height());
 		}
 	}
 }

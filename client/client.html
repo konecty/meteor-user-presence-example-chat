@@ -1,40 +1,43 @@
 <head>
-	<title>Chat</title>
+	<title>User Presence Example</title>
 </head>
 
 <body>
-	<div class="navbar navbar-default" role="navigation">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Chat</a>
-		</div>
-		<div class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-				
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li>
-					<a href="#"></a>
-				</li>
-				{{#if logged}}
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-						Mostrar como: <span style="font-weight: bold;" class="{{getUserStatus}}">{{getUserStatusDefault}}</span> <span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#" class="statusDefault">auto</a></li>
-						<li class="divider"></li>
-						<li><a href="#" class="statusDefault">away</a></li>
-						<li><a href="#" class="statusDefault">busy</a></li>
-						<li><a href="#" class="statusDefault">offline</a></li>
-					</ul>
-				</li>
-				{{/if}}
-				{{> loginButtons }}
-			</ul>
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">User Presence Example</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#"></a>
+					</li>
+					{{#if logged}}
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							Show as: <span style="font-weight: bold;" class="{{getUserStatus}}">{{getUserStatusDefault}}</span> <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#" class="statusDefault">auto</a></li>
+							<li class="divider"></li>
+							<li><a href="#" class="statusDefault">away</a></li>
+							<li><a href="#" class="statusDefault">busy</a></li>
+							<li><a href="#" class="statusDefault">offline</a></li>
+						</ul>
+					</li>
+					{{/if}}
+					{{> loginButtons }}
+				</ul>
+			</div>
 		</div>
 	</div>
 
 	{{> messages }}
+	{{> users }}
 
 	{{#if logged}}
 		{{> input }}
@@ -42,22 +45,36 @@
 </body>
 
 <template name="messages">
-	<table>
-	{{#each messages}}
-		<tr>
-			<td class="name {{getUserStatus userId}}">
-				{{getUserName userId}}:
-			</td>
-			<td>
-				{{message}}
-			</td>
-		</tr>
-	{{/each}}
-	</table>
+	<div class="messages">
+		<table>
+			{{#each messages}}
+				<tr>
+					<td class="name {{getUserStatus userId}}">
+						{{getUserName userId}}:
+					</td>
+					<td width="100%">
+						{{message}}
+					</td>
+				</tr>
+			{{/each}}
+		</table>
+	</div>
+</template>
+
+<template name="users">
+	<div class="users">
+		{{#each users}}
+			<div class="{{getUserStatus _id}}">
+				{{username}}
+			</div>
+		{{/each}}
+	</div>
 </template>
 
 <template name="input">
-	<div class="message">
-		<input type="text" id="message" placeholder="Mensagem">
+	<div class="message-container">
+		<div class="message">
+			<input type="text" id="message" placeholder="Type your message and press return">
+		</div>
 	</div>
 </template>

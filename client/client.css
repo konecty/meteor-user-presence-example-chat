@@ -3,30 +3,66 @@ html {
 	font-family: Verdana, sans-serif;
 }
 
+body {
+	padding-bottom: 40px;
+}
+
 .login-buttons-dropdown-align-right {
 	float: right;
 }
 
-.message {
+.users {
+	position: fixed;
+	top: 50px;
+	bottom: 40px;
+	right: 0px;
+	padding: 10px;
+	width: 200px;
+	background: #f1f1f1;
+	border-left: 1px solid #E7E7ED;
+}
+
+.messages {
+	position: fixed;
+	top: 50px;
+	bottom: 40px;
+	left: 0px;
+	right: 200px;
+	padding: 10px;
+	overflow: auto;
+}
+
+.message-container {
 	position: fixed;
 	bottom: 0px;
 	left: 0px;
 	right: 0px;
-	margin: 5px;
+	background: #f1f1f1;
+	border-top: 1px solid #E7E7ED;
+}
+
+.message {
+	margin: 3px;
 }
 
 #message {
 	width: 100%;
+	height: 33px;
 	font-size: 14px;
 	border-radius: 5px;
 	padding: 5px;
-	border: 2px solid #ccc;
+	border: 1px solid #E7E7ED;
+}
+
+table {
+	width: 100%;
 }
 
 .name {
 	text-align: right;
 	font-weight: bold;
 	padding-right: 5px;
+	min-width: 150px;
 }
 
 .online {
