@@ -5,7 +5,7 @@ Meteor.subscribe('users');
 
 Meteor.startup(function() {
 	Accounts.ui.config({
-		passwordSignupFields: 'USERNAME_ONLY'
+		passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
 	});
 });
 
@@ -32,6 +32,9 @@ Template.registerHelper('getUserStatus', function(userId) {
 	return user && user.status;
 });
 
+Template.registerHelper('logged', function(userId) {
+	return Meteor.userId() != null;
+});
 
 Template.messages.helpers({
 	messages: function() {

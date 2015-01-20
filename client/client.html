@@ -33,7 +33,10 @@
 	</div>
 
 	{{> messages }}
-	{{> input }}
+
+	{{#if logged}}
+		{{> input }}
+	{{/if}}
 </body>
 
 <template name="messages">
