@@ -103,7 +103,7 @@ Template.input.events = {
 				Messages.insert({
 					userId: userId,
 					message: input.value,
-					time: Date.now()
+					time: new Date()
 				});
 
 				input.value = '';
