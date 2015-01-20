@@ -5,8 +5,9 @@
 
 autopublish
 insecure
-accounts-ui
 standard-app-packages
 accounts-password
 konecty:user-presence
 konecty:multiple-instances-status
+mrt:bootstrap-3
+mrt:accounts-ui-bootstrap-3

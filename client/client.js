@@ -9,19 +9,43 @@ Meteor.startup(function() {
 	});
 });
 
+UI.body.events({
+	'click .statusDefault': function(e) {
+		var status = e.target.innerHTML;
+		if (status != Meteor.user().statusDefault) {
+			Meteor.call('setUserDefaultStatus', status);
+		}
+	}
+});
+
+Template.registerHelper('getUserStatusDefault', function() {
+	var user = Meteor.user();
+	return user && user.statusDefault;
+});
+
+Template.registerHelper('getUserStatus', function(userId) {
+	if (userId) {
+		var user = Meteor.users.findOne({_id: userId});
+	} else {
+		var user = Meteor.user();
+	}
+	return user && user.status;
+});
+
+
 Template.messages.helpers({
 	messages: function() {
 		return Messages.find({}, { sort: { time: 1}});
 	},
 
-	getUserStatus: function(userId) {
-		var user = Meteor.users.findOne({_id: userId});
-		return user && user.status;
-	},
-
 	getUserName: function(userId) {
 		var user = Meteor.users.findOne({_id: userId});
 		return user && user.username;
+	},
+
+	getUserStatusDefault: function() {
+		var user = Meteor.user();
+		return user && user.statusDefault;
 	}
 })
 

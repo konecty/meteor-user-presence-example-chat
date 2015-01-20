@@ -26,6 +26,8 @@ html {
 
 .name {
 	text-align: right;
+	font-weight: bold;
+	padding-right: 5px;
 }
 
 .online {
@@ -33,11 +35,11 @@ html {
 }
 
 .away {
-	color: #BFB442;
+	color: #E5E343;
 }
 
 .busy {
-	color: #B13D08;
+	color: #EC8150;
 }
 
 .offline {
