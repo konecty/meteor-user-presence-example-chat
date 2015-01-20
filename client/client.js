@@ -2,6 +2,7 @@
 * Templates
 */
 Meteor.subscribe('users');
+Meteor.subscribe('messages');
 
 Meteor.startup(function() {
 	Accounts.ui.config({
@@ -43,47 +44,47 @@ Template.registerHelper('logged', function(userId) {
 	return Meteor.userId() != null;
 });
 
+Template.registerHelper('getUserName', function(userId) {
+	var user = Meteor.users.findOne({_id: userId});
+	return user && user.username;
+});
+
 Template.messages.helpers({
 	messages: function() {
-		return Messages.find({}, { sort: { time: 1}});
-	},
-
-	getUserName: function(userId) {
-		var user = Meteor.users.findOne({_id: userId});
-		return user && user.username;
+		return Messages.find({}, {sort: {time: 1}});
 	}
 });
 
+Template.message.rendered = function() {
+	var messages = $('.messages');
+	messages.scrollTop(messages.height());
+};
+
 Template.users.helpers({
 	users: function() {
-		return Meteor.users.find({}, { sort: { username: 1}});
+		return Meteor.users.find({}, {sort: {username: 1}});
 	}
 });
 
 Template.input.events = {
-	'keydown input#message' : function (event) {
+	'keydown input#input' : function (event) {
 		if (event.which == 13) { // 13 is the enter key event
 			if (Meteor.user()) {
 				var userId = Meteor.user()._id;
 			} else {
 				var userId = '';
 			}
-			var message = document.getElementById('message');
+			var input = document.getElementById('input');
 
-			if (message.value != '') {
+			if (input.value != '') {
 				Messages.insert({
 					userId: userId,
-					name: name,
-					message: message.value,
+					message: input.value,
 					time: Date.now()
 				});
 
-				document.getElementById('message').value = '';
-				message.value = '';
+				input.value = '';
 			}
-
-			var messages = $('.messages');
-			messages.scrollTop(messages.height());
 		}
 	}
 }

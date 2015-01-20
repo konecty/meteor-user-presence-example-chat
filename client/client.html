@@ -54,17 +54,21 @@
 	<div class="messages">
 		<table>
 			{{#each messages}}
-				<tr>
-					<td class="name">
-						{{getUserName userId}}:
-					</td>
-					<td width="100%">
-						{{message}}
-					</td>
-				</tr>
+				{{> message .}}
 			{{/each}}
 		</table>
 	</div>
+</template>
+
+<template name="message">
+	<tr>
+		<td class="name">
+			{{getUserName userId}}:
+		</td>
+		<td width="100%">
+			{{message}}
+		</td>
+	</tr>
 </template>
 
 <template name="users">
@@ -78,9 +82,9 @@
 </template>
 
 <template name="input">
-	<div class="message-container">
-		<div class="message">
-			<input type="text" id="message" placeholder="Type your message and press return">
+	<div class="input-container">
+		<div class="input">
+			<input type="text" id="input" placeholder="Type your message and press return">
 		</div>
 	</div>
 </template>
