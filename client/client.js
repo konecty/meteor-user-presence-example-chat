@@ -45,8 +45,16 @@ Template.registerHelper('logged', function(userId) {
 });
 
 Template.registerHelper('getUserName', function(userId) {
+	if (userId === Meteor.userId()) {
+		return 'me';
+	};
+
 	var user = Meteor.users.findOne({_id: userId});
 	return user && user.username;
+});
+
+Template.registerHelper('getClassForSelfUser', function(userId) {
+	return userId === Meteor.userId() ? 'self-user' : '';
 });
 
 Template.messages.helpers({
@@ -57,7 +65,7 @@ Template.messages.helpers({
 
 Template.message.rendered = function() {
 	var messages = $('.messages');
-	messages.scrollTop(messages.height());
+	messages.scrollTop($('.messages > table').height());
 };
 
 Template.users.helpers({

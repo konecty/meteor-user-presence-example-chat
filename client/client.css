@@ -29,7 +29,6 @@ body {
 	bottom: 40px;
 	left: 0px;
 	right: 200px;
-	padding: 10px;
 	overflow: auto;
 }
 
@@ -58,6 +57,18 @@ body {
 
 table {
 	width: 100%;
+}
+
+tr.self-user {
+	background-color: #F5F5FF;
+}
+
+tr.self-user .name {
+	color: #9B9BA8;
+}
+
+td {
+	padding: 5px 0px;
 }
 
 .user-ball {
