@@ -3,6 +3,8 @@ Meteor.publish('users', function() {
 });
 
 Meteor.startup(function() {
-	InstanceStatus.registerInstance('Teste');
+	InstanceStatus.registerInstance('Test');
 	InstanceStatus.activeLogs();
+
+	UserPresenceMonitor.start();
 });
