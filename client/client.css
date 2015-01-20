@@ -53,6 +53,7 @@ body {
 	border-radius: 5px;
 	padding: 5px;
 	border: 1px solid #E7E7ED;
+	-webkit-appearance: none;
 }
 
 table {
@@ -119,4 +120,22 @@ table {
 .offline-bg {
 	background-color: rgba(204, 204, 204, .5);
 	border-color: #CCCCCC;
+}
+
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
+	.users {
+		display: none;
+	}
+
+	.messages {
+		right: 0px;
+	}
+
+	.name {
+		min-width: 0px;
+	}
+
+	.message-container {
+		right: 0px;
+	}
 }
