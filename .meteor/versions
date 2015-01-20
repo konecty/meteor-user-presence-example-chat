@@ -28,7 +28,7 @@ insecure@1.0.2
 jquery@1.0.2
 json@1.0.2
 konecty:multiple-instances-status@1.0.1
-konecty:user-presence@1.0.7
+konecty:user-presence@1.0.8
 launch-screen@1.0.1
 livedata@1.0.12
 localstorage@1.0.2
