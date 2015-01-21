@@ -12,6 +12,17 @@ p {
 	margin: 0px;
 }
 
+pre {
+	padding: 0px;
+	margin: 0px;
+	background: none !important;
+	border: 1px solid #E7E7ED;
+}
+
+.hljs {
+	background-color: #FFFFFF;
+}
+
 .login-buttons-dropdown-align-right {
 	float: right;
 }
@@ -70,11 +81,14 @@ tr.self-user {
 
 tr.self-user .name {
 	color: #9B9BA8;
-	vertical-align: top;
 }
 
 td {
 	padding: 5px 0px;
+}
+
+td:last-child {
+	padding-right: 5px;
 }
 
 .user-ball {
@@ -110,6 +124,7 @@ td {
 	padding-left: 10px;
 	min-width: 150px;
 	color: #CCCCCC;
+	vertical-align: top;
 }
 
 .online {
