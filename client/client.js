@@ -140,8 +140,17 @@ Template.message.events = {
 				}, 1);
 			}
 		}
+	},
+	'click .name > span': function(event) {
+		var input = $('#input');
+		var val = input.val();
+		if (/[^\s]$/.test(val)) {
+			val += ' ';
+		}
+		input.val(val + '@' + Meteor.users.findOne(this.userId).username + ' ');
+		input.focus();
 	}
-}
+};
 
 Template.users.helpers({
 	users: function() {

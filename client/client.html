@@ -63,7 +63,9 @@
 <template name="message">
 	<tr class="{{getClassForSelfUser userId}}">
 		<td class="name">
-			{{getUserName userId}}:
+			<span>
+				{{getUserName userId}}:
+			</span>
 		</td>
 		<td width="100%">
 			{{#if canEdit editing userId}}
