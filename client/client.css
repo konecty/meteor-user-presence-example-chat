@@ -61,7 +61,7 @@ pre {
 	height: 34px;
 }
 
-#input {
+#input, #edit {
 	width: 100%;
 	height: 33px;
 	font-size: 14px;
@@ -69,6 +69,10 @@ pre {
 	padding: 5px;
 	border: 1px solid #E7E7ED;
 	-webkit-appearance: none;
+}
+
+#edit {
+	height: auto;
 }
 
 table {

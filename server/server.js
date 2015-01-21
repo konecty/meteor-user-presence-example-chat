@@ -8,7 +8,9 @@ Meteor.publish('messages', function() {
 
 Meteor.startup(function() {
 	Messages.allow({
-		update: false,
+		update: function(userId, doc) {
+			return doc.userId == userId;
+		},
 		remove: false,
 		insert: function(userId, doc) {
 			doc.userId = userId;

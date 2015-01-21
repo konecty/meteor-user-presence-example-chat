@@ -32,6 +32,11 @@ Meteor.startup(function() {
 	messages.scrollTop(messages.height());
 });
 
+var scrollMessagesDown = function() {
+	var messages = $('.messages');
+	messages.scrollTop($('.messages > table').height());
+}
+
 UI.body.events({
 	'click .statusDefault': function(e) {
 		var status = e.target.innerHTML;
@@ -101,9 +106,34 @@ Template.messages.helpers({
 });
 
 Template.message.rendered = function() {
-	var messages = $('.messages');
-	messages.scrollTop($('.messages > table').height());
+	scrollMessagesDown();
 };
+
+Template.message.helpers({
+	canEdit: function(editing, userId) {
+		return editing && userId == Meteor.userId();
+	}
+});
+
+Template.message.events = {
+	'keydown #edit' : function (event) {
+		if (event.which == 13 && event.shiftKey == false) { // 13 is the enter key event
+			var input = $('#edit');
+			if (input.val() != '') {
+				var message = input.val();
+
+				Messages.update({_id: this._id}, {$set: {message: message, editing: false}});
+
+				event.preventDefault();
+
+				Meteor.setTimeout(function() {
+					scrollMessagesDown();
+					$('#input').focus();
+				}, 1);
+			}
+		}
+	}
+}
 
 Template.users.helpers({
 	users: function() {
@@ -113,19 +143,30 @@ Template.users.helpers({
 
 Template.input.events = {
 	'keydown #input' : function (event) {
-		if (event.which == 13 && event.shiftKey == false) { // 13 is the enter key event
-			if (Meteor.user()) {
-				var userId = Meteor.user()._id;
-			} else {
-				var userId = '';
-			}
+		if (event.which == 38) {
 			var input = $('#input');
+			if (input.val() == '') {
+				var message = Messages.findOne({userId: Meteor.userId()}, {sort: {time: -1}});
+				Messages.update({_id: message._id}, {$set: {editing: true}}, {sort: -1});
 
+				event.preventDefault();
+
+				Meteor.setTimeout(function() {
+					scrollMessagesDown();
+					$('#edit').focus();
+				}, 1);
+
+				return;
+			}
+		}
+
+		if (event.which == 13 && event.shiftKey == false) { // 13 is the enter key event
+			var input = $('#input');
 			if (input.val() != '') {
 				var message = input.val();
 
 				Messages.insert({
-					userId: userId,
+					userId: Meteor.userId(),
 					message: message,
 					time: new Date()
 				});
