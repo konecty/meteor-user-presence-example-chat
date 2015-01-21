@@ -97,8 +97,9 @@ Template.registerHelper('postMD', new Package.templating.Template('postMD', func
 
 	var me = '';
 
-	text = text.replace(/@([^\s]+)/g, function(v, p) {
-		if (p == Meteor.user().username) {
+	text = text.replace(/@([^\s,]+)/g, function(v, p) {
+		var user = Meteor.user();
+		if (p == (user && user.username)) {
 			return '<span class="user-reference user-reference-me">'+v+'</span>'
 		} else {
 			return '<span class="user-reference">'+v+'</span>'
@@ -147,7 +148,8 @@ Template.message.events = {
 		if (/[^\s]$/.test(val)) {
 			val += ' ';
 		}
-		input.val(val + '@' + Meteor.users.findOne(this.userId).username + ' ');
+		var user = Meteor.users.findOne(this.userId);
+		input.val(val + '@' + (user && user.username) + ' ');
 		input.focus();
 	}
 };
