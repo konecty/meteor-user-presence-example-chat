@@ -68,6 +68,25 @@ Template.registerHelper('getUserName', function(userId) {
 	return user && user.username;
 });
 
+Template.registerHelper('getUserTime', function(messageId) {
+	var message = Messages.findOne({_id: messageId});
+	var rawTime = message.time;
+	var parsedTime = rawTime.getDate() +
+		'-' +
+		(rawTime.getMonth() + 1) +
+		'-' +
+		rawTime.getFullYear() +
+		' ' +
+		rawTime.getHours() +
+		':' +
+		rawTime.getMinutes() +
+		':' +
+		rawTime.getSeconds()
+	;
+
+	return parsedTime;
+});
+
 Template.registerHelper('getClassForSelfUser', function(userId) {
 	return userId === Meteor.userId() ? 'self-user' : '';
 });
@@ -90,7 +109,7 @@ Template.users.helpers({
 });
 
 Template.input.events = {
-	'keydown input#input' : function (event) {
+	'keydown #input' : function (event) {
 		if (event.which == 13) { // 13 is the enter key event
 			if (Meteor.user()) {
 				var userId = Meteor.user()._id;
