@@ -63,10 +63,13 @@
 <template name="message">
 	<tr class="{{getClassForSelfUser userId}}">
 		<td class="name">
-			{{getUserName userId}}:
+			{{getUserName userId}}
+		</td>
+		<td style="min-width: 150px;">
+			{{getUserTime this._id}}:
 		</td>
 		<td width="100%">
-			{{message}}
+			{{#markdown}}{{message}}{{/markdown}}
 		</td>
 	</tr>
 </template>
