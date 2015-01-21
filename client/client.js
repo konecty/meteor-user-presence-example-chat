@@ -95,7 +95,15 @@ Template.registerHelper('postMD', new Package.templating.Template('postMD', func
 		text = Package.blaze.Blaze._toText(self.templateContentBlock, Package.htmljs.HTML.TEXTMODE.STRING);
 	}
 
-	text = text.replace(/(@[^\s]+)/g, '<span class="user-reference">$1</span>');
+	var me = '';
+
+	text = text.replace(/@([^\s]+)/g, function(v, p) {
+		if (p == Meteor.user().username) {
+			return '<span class="user-reference user-reference-me">'+v+'</span>'
+		} else {
+			return '<span class="user-reference">'+v+'</span>'
+		}
+	});
 	return HTML.Raw(text);
 }));
 
@@ -140,6 +148,18 @@ Template.users.helpers({
 		return Meteor.users.find({}, {sort: {username: 1}});
 	}
 });
+
+Template.users.events = {
+	'click .user-name': function(event) {
+		var input = $('#input');
+		var val = input.val();
+		if (/[^\s]$/.test(val)) {
+			val += ' ';
+		}
+		input.val(val + '@' + this.username + ' ');
+		input.focus();
+	}
+};
 
 Template.input.events = {
 	'keydown #input' : function (event) {

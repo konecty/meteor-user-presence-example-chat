@@ -112,14 +112,21 @@ td:last-child {
 
 .user-name {
 	color: #888888;
+	cursor: pointer;
 }
 
 .user-reference {
 	color: red;
 	background-color: #fafafa;
 	border: 1px solid #e1e1e1;
-	border-radius: 4px;
-	padding: 1px 5px;
+	border-radius: 20px;
+	padding: 0px 5px;
+}
+
+.user-reference-me {
+	color: white;
+	background-color: rgb(107, 107, 255);
+	border-color: rgb(107, 107, 255);
 }
 
 .name {
