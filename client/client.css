@@ -41,7 +41,7 @@ pre {
 .messages {
 	position: fixed;
 	top: 50px;
-	bottom: 41px;
+	bottom: 61px;
 	left: 0px;
 	right: 200px;
 	overflow: auto;
@@ -93,6 +93,12 @@ td {
 
 td:last-child {
 	padding-right: 5px;
+}
+
+.util-link {
+	color: #AAAAAA;
+	margin: 0px 10px;
+	text-decoration: underline;
 }
 
 .user-ball {

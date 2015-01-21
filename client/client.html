@@ -71,7 +71,7 @@
 			{{#if canEdit editing userId}}
 				<textarea id="edit" placeholder="Type your message and press return">{{message}}</textarea>
 			{{else}}
-				{{#postMD}}{{#markdown}}{{#preMD}}{{message}}{{/preMD}}{{/markdown}}{{/postMD}}
+				{{#emojione}}{{#postMD}}{{#markdown}}{{#preMD}}{{message}}{{/preMD}}{{/markdown}}{{/postMD}}{{/emojione}}
 			{{/if}}
 		</td>
 	</tr>
@@ -92,5 +92,6 @@
 		<div class="input">
 			<textarea id="input" placeholder="Type your message and press return"></textarea>
 		</div>
+		<a class="util-link" href="http://www.emoji-cheat-sheet.com/">emojis</a>
 	</div>
 </template>

@@ -48,6 +48,7 @@ nooitaf:colors@0.0.2
 npm-bcrypt@0.7.7
 observe-sequence@1.0.4
 ordered-dict@1.0.2
+qnub:emojione@0.0.3
 random@1.0.2
 reactive-dict@1.0.5
 reactive-var@1.0.4
