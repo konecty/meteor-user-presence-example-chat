@@ -72,6 +72,28 @@ Template.registerHelper('getClassForSelfUser', function(userId) {
 	return userId === Meteor.userId() ? 'self-user' : '';
 });
 
+Template.registerHelper('preMD', new Package.templating.Template('preMD', function() {
+	var self = this;
+	var text = "";
+	if(self.templateContentBlock) {
+		text = Package.blaze.Blaze._toText(self.templateContentBlock, Package.htmljs.HTML.TEXTMODE.STRING);
+	}
+
+	text = text.replace(/#/g, '\\#');
+	return text;
+}));
+
+Template.registerHelper('postMD', new Package.templating.Template('postMD', function() {
+	var self = this;
+	var text = "";
+	if(self.templateContentBlock) {
+		text = Package.blaze.Blaze._toText(self.templateContentBlock, Package.htmljs.HTML.TEXTMODE.STRING);
+	}
+
+	text = text.replace(/(@[^\s]+)/g, '<span class="user-reference">$1</span>');
+	return HTML.Raw(text);
+}));
+
 Template.messages.helpers({
 	messages: function() {
 		return Messages.find({}, {sort: {time: 1}});
@@ -90,23 +112,26 @@ Template.users.helpers({
 });
 
 Template.input.events = {
-	'keydown input#input' : function (event) {
-		if (event.which == 13) { // 13 is the enter key event
+	'keydown #input' : function (event) {
+		if (event.which == 13 && event.shiftKey == false) { // 13 is the enter key event
 			if (Meteor.user()) {
 				var userId = Meteor.user()._id;
 			} else {
 				var userId = '';
 			}
-			var input = document.getElementById('input');
+			var input = $('#input');
 
-			if (input.value != '') {
+			if (input.val() != '') {
+				var message = input.val();
+
 				Messages.insert({
 					userId: userId,
-					message: input.value,
+					message: message,
 					time: new Date()
 				});
 
-				input.value = '';
+				event.preventDefault();
+				input.val('');
 			}
 		}
 	}

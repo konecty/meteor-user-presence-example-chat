@@ -8,6 +8,10 @@ body {
 	color: #888888;
 }
 
+p {
+	margin: 0px;
+}
+
 .login-buttons-dropdown-align-right {
 	float: right;
 }
@@ -26,7 +30,7 @@ body {
 .messages {
 	position: fixed;
 	top: 50px;
-	bottom: 40px;
+	bottom: 41px;
 	left: 0px;
 	right: 200px;
 	overflow: auto;
@@ -43,6 +47,7 @@ body {
 
 .input {
 	margin: 3px;
+	height: 34px;
 }
 
 #input {
@@ -65,6 +70,7 @@ tr.self-user {
 
 tr.self-user .name {
 	color: #9B9BA8;
+	vertical-align: top;
 }
 
 td {
@@ -88,6 +94,14 @@ td {
 
 .user-name {
 	color: #888888;
+}
+
+.user-reference {
+	color: red;
+	background-color: #fafafa;
+	border: 1px solid #e1e1e1;
+	border-radius: 4px;
+	padding: 1px 5px;
 }
 
 .name {
