@@ -19,6 +19,23 @@ pre {
 	border: 1px solid #E7E7ED;
 }
 
+.time {
+	float: left;
+	display: none;
+	position: absolute;
+	background-color: #7B7DFF;
+	border-radius: 0 10px 10px 0;
+	padding: 2px 8px;
+	font-size: 10px;
+	color: #fff;
+	margin-top: 2px;
+	margin-left: -13px;
+}
+
+tr:hover .time {
+	display: block;
+}
+
 .hljs {
 	background-color: #FFFFFF;
 }

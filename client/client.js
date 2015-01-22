@@ -46,6 +46,10 @@ UI.body.events({
 	}
 });
 
+Template.registerHelper('getTime', function(date) {
+	return moment(date).format('HH:mm:ss');
+});
+
 Template.registerHelper('getUserStatusDefault', function() {
 	var user = Meteor.user();
 	return (user && user.statusDefault) || 'online';

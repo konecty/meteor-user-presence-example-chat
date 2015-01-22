@@ -63,6 +63,9 @@
 <template name="message">
 	<tr class="{{getClassForSelfUser userId}}">
 		<td class="name">
+			<div class="time">
+				{{getTime time}}
+			</div>
 			<span>
 				{{getUserName userId}}:
 			</span>
