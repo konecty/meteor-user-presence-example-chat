@@ -19,6 +19,11 @@ pre {
 	border: 1px solid #E7E7ED;
 }
 
+.alert-warning {
+	z-index: 100000;
+	position: relative;
+}
+
 .time {
 	float: left;
 	display: none;

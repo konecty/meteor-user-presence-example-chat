@@ -19,6 +19,10 @@ Meteor.startup(function() {
 		}
 	});
 
+	InstanceStatus.events.on('registerInstance', function(id, record) {
+		console.log('registerInstance, pid:', record.pid);
+	});
+
 	InstanceStatus.registerInstance('Test');
 	InstanceStatus.activeLogs();
 
